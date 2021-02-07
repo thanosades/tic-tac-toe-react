@@ -3,29 +3,29 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 
-function Square(props) {
-  /*
-   * `value` is the state, `setValue` is the setter function
-   * never change state directly, such as value = 4
-   * instead do setValue(4) and let React handle the assignment
-   */
+// function Square(props) {
+//   /*
+//    * `value` is the state, `setValue` is the setter function
+//    * never change state directly, such as value = 4
+//    * instead do setValue(4) and let React handle the assignment
+//    */
 
-  return (
-    <button className="square" onClick={props.onClick}>
-      {props.value}
-    </button>
-  );
-}
+//   return (
+//     <button className="square" onClick={props.onClick}>
+//       {props.value}
+//     </button>
+//   );
+// }
 
-function Board(props) {
-  function renderSquare(i) {
-    return (
-      <Square
-        value={props.squares[i]}
-        onClick={() => props.onClick(i)}
-      />
-    );
-  }
+const Square = ({ value, onClick }) => (
+  <button className="square" onClick={onClick}>{value}</button>
+)
+
+function Board({ squares, onClick }) {
+
+  const renderSquare = i => (
+    <Square value={squares[i]} onClick={() => onClick(i)}/>
+  )  
 
   return (
     <div>
